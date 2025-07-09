@@ -1,6 +1,6 @@
-# Databricks MLflow Quickstart
+# Databricks MLflow GenAI Quickstart
 
 Learning about Mlflow for GenAI apps.
 
 References:
-- [Databrick MLflow Quickstart](https://docs.databricks.com/aws/en/mlflow3/genai/getting-started/)
+- [Databricks guide to start using MLflow for GenAI apps](https://docs.databricks.com/aws/en/mlflow3/genai/getting-started/)
