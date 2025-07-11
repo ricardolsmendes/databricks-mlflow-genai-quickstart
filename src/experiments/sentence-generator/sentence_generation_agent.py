@@ -1,16 +1,14 @@
-import dotenv
+from typing import Iterable
+
 import mlflow
-
 import openai
-from openai.types import chat
-import prompts
+from openai.types.chat.chat_completion_message import ChatCompletionMessage
+from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
 
 
-class GameGenerator:
+class SentenceGenerationAgent:
 
     def __init__(self):
-        dotenv.load_dotenv()
-
         # Enable MLflow's autologging to instrument the application with Tracing.
         mlflow.openai.autolog()
 
@@ -22,19 +20,15 @@ class GameGenerator:
             base_url=f"{mlflow_creds.host}/serving-endpoints",
         )
 
-    @mlflow.trace
-    def run(self, template: str) -> str:
+    def invoke(
+        self, messages: Iterable[ChatCompletionMessageParam]
+    ) -> ChatCompletionMessage:
         """Complete a sentence template using an LLM."""
 
         response = self.client.chat.completions.create(
             # This example uses Databricks hosted Llama 4 Maverick. If you provide your
             # own OpenAI credentials, replace with a valid OpenAI model e.g., gpt-4o.
             model="databricks-llama-4-maverick",
-            messages=[
-                chat.ChatCompletionSystemMessageParam(
-                    content=prompts.GAME_GENERATOR_SYSTEM_PROMPT, role="system"
-                ),
-                chat.ChatCompletionUserMessageParam(content=template, role="user"),
-            ],
+            messages=messages,
         )
-        return response.choices[0].message.content
+        return response.choices[0].message

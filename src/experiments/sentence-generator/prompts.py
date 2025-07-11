@@ -1,4 +1,4 @@
-GAME_GENERATOR_SYSTEM_PROMPT = """
+SENTENCE_GENERATION_SYSTEM_PROMPT = """
 You are a smart bot that can complete sentence templates to make them funny.
 Be creative and edgy.
 """
