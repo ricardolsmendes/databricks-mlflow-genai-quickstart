@@ -4,12 +4,6 @@ bundle:
 include:
   - resources/*.yaml
 
-variables:
-  environment:
-    description: Deployment environment (dev, staging, qa, prod)
-    default: dev
-    type: string
-
 sync:
   paths:
     - src
@@ -20,3 +14,9 @@ targets:
     default: true
     workspace:
       host: ""
+
+variables:
+  environment:
+    description: Deployment environment (dev, staging, qa, prod)
+    default: dev
+    type: string
