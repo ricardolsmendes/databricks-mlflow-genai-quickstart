@@ -1,0 +1,4 @@
+resources:
+  experiments:
+    sentence-generator:
+      name: ${workspace.root_path}/sentence-generator

@@ -1,0 +1,26 @@
+bundle:
+  name: mlflow-genai-quickstart
+
+include:
+  - resources/*.yml
+
+presets:
+  tags:
+    - key: Project
+      value: MLflow GenAI Quickstart
+    - key: Environment
+      value: ${bundle.target}
+    - key: CreatedBy
+      value: Databricks Asset Bundle
+
+sync:
+  paths:
+    - src
+
+targets:
+  dev:
+    default: true
+    mode: development
+
+  prod:
+    mode: production
