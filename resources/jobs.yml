@@ -1,0 +1,9 @@
+resources:
+  jobs:
+    model-deployment-job:
+      description: Job that manages a model version's lifecycle.
+      name: model-deployment-job
+      tasks:
+        - task_key: model-evaluation-task
+          spark_python_task:
+            python_file: ./experiments/sentence-completion/model_evaluation.py
