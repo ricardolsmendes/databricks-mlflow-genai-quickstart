@@ -14,4 +14,4 @@ resources:
         - task_key: model-evaluation
           environment_key: python-3-11
           spark_python_task:
-            python_file: ../src/experiments/sentence-completion/model_evaluation.py
+            python_file: ../src/sentence-completion/model_evaluation.py

@@ -2,7 +2,7 @@ import dotenv
 import prompts
 from mlflow.types import agent
 
-import sentences_agent
+import model_wrapper
 
 
 SENTENCE_TEMPLATE = """
@@ -22,6 +22,6 @@ messages = [
     agent.ChatAgentMessage(role="user", content=SENTENCE_TEMPLATE),
 ]
 
-result = sentences_agent.SentencesAgent().predict(messages)
+result = model_wrapper.MLflowChatAgentWrapper().predict(messages)
 print(f"Input: {SENTENCE_TEMPLATE}")
 print(f"Output: {result.messages[0].content}")
