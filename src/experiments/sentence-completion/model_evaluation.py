@@ -1,4 +1,4 @@
-import mlflow.genai
+import mlflow
 from mlflow.genai import scorers
 
 import evaluation_dataset
@@ -27,7 +27,7 @@ eval_scorers = [
 
 # Run evaluation
 print("Evaluating with basic prompt...")
-results = mlflow.genai.evaluate(
+mlflow.genai.evaluate(
     data=evaluation_dataset.eval_data,
     predict_fn=sentences_agent.SentencesAgent().predict,
     scorers=eval_scorers,

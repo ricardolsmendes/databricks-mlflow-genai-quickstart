@@ -1,8 +1,8 @@
 resources:
   jobs:
-    model-deployment-job:
-      name: model-deployment-job
-      description: Job that manages a model version's lifecycle.
+    sentence-completion-model-deployment:
+      name: Sentence Completion Model Deployment
+      description: Job that manages the model version's lifecycle.
       environments:
         - environment_key: python-3-11
           spec:
@@ -11,7 +11,7 @@ resources:
               -r ../requirements.txt
             ]
       tasks:
-        - task_key: model-evaluation-task
+        - task_key: model-evaluation
           environment_key: python-3-11
           spark_python_task:
             python_file: ../src/experiments/sentence-completion/model_evaluation.py
