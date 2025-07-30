@@ -19,5 +19,8 @@ targets:
     default: true
     mode: development
 
+  staging:
+    mode: production
+
   prod:
     mode: production

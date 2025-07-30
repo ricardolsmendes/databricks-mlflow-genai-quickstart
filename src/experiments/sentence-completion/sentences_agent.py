@@ -6,7 +6,7 @@ from mlflow.pyfunc import ChatAgent
 from mlflow.types import agent
 from mlflow.types.agent import ChatAgentMessage, ChatAgentResponse, ChatContext
 
-import sentence_generation_agent
+import sentence_completion_agent
 
 
 class SentencesAgent(ChatAgent):
@@ -16,7 +16,7 @@ class SentencesAgent(ChatAgent):
     """
 
     def __init__(self):
-        self.agent = sentence_generation_agent.SentenceGenerationAgent()
+        self.agent = sentence_completion_agent.SentenceCompletionAgent()
 
     @mlflow.trace
     def predict(

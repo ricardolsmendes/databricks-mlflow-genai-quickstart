@@ -1,7 +1,7 @@
 import dotenv
+import prompts
 from mlflow.types import agent
 
-import prompts
 import sentences_agent
 
 
@@ -17,7 +17,7 @@ dotenv.load_dotenv()
 
 messages = [
     agent.ChatAgentMessage(
-        role="system", content=prompts.SENTENCE_GENERATION_SYSTEM_PROMPT
+        role="system", content=prompts.SENTENCE_COMPLETION_SYSTEM_PROMPT
     ),
     agent.ChatAgentMessage(role="user", content=SENTENCE_TEMPLATE),
 ]

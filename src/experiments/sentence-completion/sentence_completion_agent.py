@@ -6,7 +6,7 @@ from openai.types.chat.chat_completion_message import ChatCompletionMessage
 from openai.types.chat.chat_completion_message_param import ChatCompletionMessageParam
 
 
-class SentenceGenerationAgent:
+class SentenceCompletionAgent:
 
     def __init__(self):
         # Enable MLflow's autologging to instrument the application with Tracing.
