@@ -1,4 +1,4 @@
 resources:
   experiments:
     sentence-completion:
-      name: ${workspace.root_path}/sentence-completion
+      name: ${workspace.root_path}/sentence_completion

@@ -1,9 +1,8 @@
 import dotenv
-import prompts
 from mlflow.types import agent
 
-import model_wrapper
-
+import agent_wrapper
+import prompts
 
 SENTENCE_TEMPLATE = """
 Yesterday,
@@ -22,6 +21,6 @@ messages = [
     agent.ChatAgentMessage(role="user", content=SENTENCE_TEMPLATE),
 ]
 
-result = model_wrapper.MLflowChatAgentWrapper().predict(messages)
+result = agent_wrapper.MLflowChatAgentWrapper().predict(messages)
 print(f"Input: {SENTENCE_TEMPLATE}")
 print(f"Output: {result.messages[0].content}")

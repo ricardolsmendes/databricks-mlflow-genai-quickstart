@@ -1,9 +1,8 @@
 import mlflow
 from mlflow.genai import scorers
 
+import agent_wrapper
 import evaluation_dataset
-import model_wrapper
-
 
 # Define evaluation scorers
 eval_scorers = [
@@ -27,6 +26,6 @@ eval_scorers = [
 print("Evaluating with basic prompt...")
 mlflow.genai.evaluate(
     data=evaluation_dataset.eval_data,
-    predict_fn=model_wrapper.MLflowChatAgentWrapper().predict,
+    predict_fn=agent_wrapper.MLflowChatAgentWrapper().predict,
     scorers=eval_scorers,
 )
