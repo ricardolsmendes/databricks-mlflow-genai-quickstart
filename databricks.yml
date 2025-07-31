@@ -13,6 +13,7 @@ presets:
 sync:
   paths:
     - src
+    - requirements.txt
 
 targets:
   dev:

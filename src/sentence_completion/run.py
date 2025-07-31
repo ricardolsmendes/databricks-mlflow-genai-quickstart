@@ -1,26 +1,18 @@
 import dotenv
-from mlflow.types import agent
 
 import agent_wrapper
-import prompts
+import message_factory
 
 SENTENCE_TEMPLATE = """
-Yesterday,
- ____ (person) brought a
- ____ (item) and used it to
- ____ (verb) a
- ____ (object)
+Yesterday, ____ (person) brought a ____ (item) and used it to ____ (verb) a ____ (object)
 """
 
 dotenv.load_dotenv()
 
-messages = [
-    agent.ChatAgentMessage(
-        role="system", content=prompts.SENTENCE_COMPLETION_SYSTEM_PROMPT
-    ),
-    agent.ChatAgentMessage(role="user", content=SENTENCE_TEMPLATE),
-]
+input_messages = message_factory.SentenceCompletionMessageFactory.make_input_messages(
+    SENTENCE_TEMPLATE
+)
 
-result = agent_wrapper.MLflowChatAgentWrapper().predict(messages)
+result = agent_wrapper.MLflowChatAgentWrapper().predict(input_messages)
 print(f"Input: {SENTENCE_TEMPLATE}")
 print(f"Output: {result.messages[0].content}")
