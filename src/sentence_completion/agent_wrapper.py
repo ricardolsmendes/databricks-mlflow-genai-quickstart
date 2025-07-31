@@ -6,17 +6,17 @@ from mlflow.pyfunc import ChatAgent
 from mlflow.types import agent
 from mlflow.types.agent import ChatAgentMessage, ChatAgentResponse, ChatContext
 
-import sentence_completion_agent
+import agent as custom_agent
 
 
-class SentencesAgent(ChatAgent):
+class MLflowChatAgentWrapper(ChatAgent):
     """
     Wrap the custom agent in an MLflow ChatAgent,
     defining a predictable API for the agent using a signature.
     """
 
     def __init__(self):
-        self.agent = sentence_completion_agent.SentenceCompletionAgent()
+        self.custom_agent = custom_agent.SentenceCompletionAgent()
 
     @mlflow.trace
     def predict(
@@ -28,7 +28,7 @@ class SentencesAgent(ChatAgent):
         # ChatAgent has a built-in helper method to help convert framework-specific
         # messages, like mlflow ChatAgentMessage to a python dictionary.
         message_dict = self._convert_messages_to_dict(messages)
-        output = self.agent.invoke(message_dict)
+        output = self.custom_agent.invoke(message_dict)
 
         return ChatAgentResponse(
             messages=[
