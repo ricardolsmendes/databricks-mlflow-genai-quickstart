@@ -1,7 +1,10 @@
 import argparse
+import logging
 import os
 
 from sentence_completion.model_evaluation import evaluators
+
+logging.basicConfig(level=logging.INFO)
 
 parser = argparse.ArgumentParser(description="Process Databricks job parameters.")
 parser.add_argument(
