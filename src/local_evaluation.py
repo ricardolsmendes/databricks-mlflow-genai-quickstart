@@ -2,9 +2,9 @@ import logging
 
 import dotenv
 
-from sentence_completion.model_evaluation import evaluators
+from sentence_completion.evaluation import runners
 
 logging.basicConfig(level=logging.INFO)
 dotenv.load_dotenv()
 
-evaluators.BasicPromptEvaluator.run()
+runners.BasicPromptRunner.run()

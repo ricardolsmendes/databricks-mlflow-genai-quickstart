@@ -10,7 +10,7 @@ resources:
             dependencies:
               - -r ${workspace.file_path}/requirements.txt
       tasks:
-        - task_key: model-model_evaluation
+        - task_key: model-evaluation
           environment_key: python-3-11
           spark_python_task:
             python_file: ${workspace.file_path}/src/job_evaluation.py

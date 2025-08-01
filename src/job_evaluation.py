@@ -2,7 +2,7 @@ import argparse
 import logging
 import os
 
-from sentence_completion.model_evaluation import evaluators
+from sentence_completion.evaluation import runners
 
 logging.basicConfig(level=logging.INFO)
 
@@ -15,4 +15,4 @@ args = parser.parse_args()
 
 os.environ["MLFLOW_EXPERIMENT_ID"] = args.mlflow_experiment_id
 
-evaluators.BasicPromptEvaluator.run()
+runners.BasicPromptRunner.run()

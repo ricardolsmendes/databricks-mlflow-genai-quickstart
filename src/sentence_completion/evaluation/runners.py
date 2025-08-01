@@ -4,15 +4,15 @@ import mlflow
 from mlflow.models.evaluation.base import EvaluationResult
 
 from sentence_completion import agent_wrapper
-from sentence_completion.model_evaluation import dataset, scorers
+from sentence_completion.evaluation import dataset, scorers
 
 
-class BasicPromptEvaluator:
-    """Evaluator for the sentence completion agent using basic prompts."""
+class BasicPromptRunner:
+    """Evaluate the sentence completion agent using basic prompt."""
 
     @classmethod
     def run(cls) -> EvaluationResult:
-        logging.info("Evaluating with basic prompts...")
+        logging.info("Evaluating with basic prompt...")
         return mlflow.genai.evaluate(
             data=dataset.EVAL_DATA,
             scorers=scorers.EVAL_SCORERS,
