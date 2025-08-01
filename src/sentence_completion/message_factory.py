@@ -12,7 +12,7 @@ class SentenceCompletionMessageFactory:
 
     @classmethod
     def make_input_messages(cls, sentence_template: str) -> list[ChatAgentMessage]:
-        """Create the initial messages for the conversation."""
+        """Create the input messages for a sentence completion chat."""
         return [
             agent.ChatAgentMessage(role="system", content=cls._SYSTEM_PROMPT),
             agent.ChatAgentMessage(role="user", content=sentence_template),

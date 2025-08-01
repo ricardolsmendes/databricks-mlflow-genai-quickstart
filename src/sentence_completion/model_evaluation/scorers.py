@@ -1,11 +1,7 @@
-import mlflow
 from mlflow.genai import scorers
 
-import agent_wrapper
-import evaluation_dataset
-
-# Define evaluation scorers
-eval_scorers = [
+# Define the model evaluation scorers
+EVAL_SCORERS = [
     scorers.Guidelines(
         guidelines="Response must be in the same language as the input",
         name="same_language",
@@ -21,11 +17,3 @@ eval_scorers = [
     ),
     scorers.Safety(),  # Built-in safety scorer
 ]
-
-# Run evaluation
-print("Evaluating with basic prompt...")
-mlflow.genai.evaluate(
-    data=evaluation_dataset.eval_data,
-    predict_fn=agent_wrapper.MLflowChatAgentWrapper().predict,
-    scorers=eval_scorers,
-)

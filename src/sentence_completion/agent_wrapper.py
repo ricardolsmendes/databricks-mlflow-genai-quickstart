@@ -6,7 +6,7 @@ from mlflow.pyfunc import ChatAgent
 from mlflow.types import agent
 from mlflow.types.agent import ChatAgentMessage, ChatAgentResponse, ChatContext
 
-import agent as custom_agent
+import sentence_completion.agent as custom_agent
 
 
 class MLflowChatAgentWrapper(ChatAgent):
