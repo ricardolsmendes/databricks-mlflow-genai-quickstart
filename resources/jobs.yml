@@ -4,14 +4,14 @@ resources:
       name: Sentence Completion Model Deployment
       description: Manages the Sentence Completion Model version's lifecycle.
       environments:
-        - environment_key: python-3-11
+        - environment_key: python-3-12
           spec:
-            environment_version: 2
+            environment_version: 3
             dependencies:
               - -r ${workspace.file_path}/requirements.txt
       tasks:
         - task_key: model-evaluation
-          environment_key: python-3-11
+          environment_key: python-3-12
           spark_python_task:
             python_file: ${workspace.file_path}/src/job_evaluation.py
             parameters:
