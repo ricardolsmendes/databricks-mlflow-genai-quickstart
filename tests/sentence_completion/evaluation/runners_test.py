@@ -5,20 +5,19 @@ from sentence_completion.evaluation import runners
 
 
 class TestBasicPromptEvaluator(unittest.TestCase):
-    @mock.patch("sentence_completion.evaluation.runners.mlflow.genai.evaluate")
-    @mock.patch(
-        "sentence_completion.evaluation.runners.scorers.EVAL_SCORERS", "dummy_scorers"
-    )
-    @mock.patch(
-        "sentence_completion.evaluation.runners.dataset.EVAL_DATA", "dummy_data"
-    )
-    @mock.patch(
-        "sentence_completion.evaluation.runners.chat_agent_wrapper.ChatAgentWrapper"
-    )
-    def test_run_returns_evaluation_result(self, mock_agent_wrapper, mock_evaluate):
+    _MODULE_UNDER_TEST = "sentence_completion.evaluation.runners"
+
+    @mock.patch(f"{_MODULE_UNDER_TEST}.mlflow.genai.evaluate")
+    @mock.patch(f"{_MODULE_UNDER_TEST}.scorers.EvaluationScorersFactory.make_scorers")
+    @mock.patch(f"{_MODULE_UNDER_TEST}.dataset.EVAL_DATA", "dummy_data")
+    @mock.patch(f"{_MODULE_UNDER_TEST}.chat_agent_wrapper.ChatAgentWrapper")
+    def test_run_returns_evaluation_result(
+        self, mock_agent_wrapper, mock_make_scorers, mock_evaluate
+    ):
         # Given
         mock_predict = mock.MagicMock()
         mock_agent_wrapper.return_value.predict = mock_predict
+        mock_make_scorers.return_value = "dummy_scorers"
         mock_evaluate.return_value = "evaluation_result"
 
         # When

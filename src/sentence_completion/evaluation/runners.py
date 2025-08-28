@@ -15,6 +15,6 @@ class BasicPromptRunner:
         logging.info("Evaluating with basic prompt...")
         return mlflow.genai.evaluate(
             data=dataset.EVAL_DATA,
-            scorers=scorers.EVAL_SCORERS,
+            scorers=scorers.EvaluationScorersFactory.make_scorers(),
             predict_fn=chat_agent_wrapper.ChatAgentWrapper().predict,
         )
