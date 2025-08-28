@@ -13,7 +13,7 @@ class TestBasicPromptEvaluator(unittest.TestCase):
         "sentence_completion.evaluation.runners.dataset.EVAL_DATA", "dummy_data"
     )
     @mock.patch(
-        "sentence_completion.evaluation.runners.agent_wrapper.MLflowChatAgentWrapper"
+        "sentence_completion.evaluation.runners.chat_agent_wrapper.ChatAgentWrapper"
     )
     def test_run_returns_evaluation_result(self, mock_agent_wrapper, mock_evaluate):
         # Given

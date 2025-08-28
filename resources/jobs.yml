@@ -10,10 +10,10 @@ resources:
             dependencies:
               - -r ${workspace.file_path}/requirements.txt
       tasks:
-        - task_key: model-evaluation
+        - task_key: evaluate-model
           environment_key: python-3-12
           spark_python_task:
-            python_file: ${workspace.file_path}/src/job_evaluation.py
+            python_file: ${workspace.file_path}/src/evaluate-model-task.py
             parameters:
               - --mlflow-experiment-id
               - ${resources.experiments.sentence-completion.id}

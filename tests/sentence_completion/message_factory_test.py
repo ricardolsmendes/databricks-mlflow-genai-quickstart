@@ -2,17 +2,17 @@ import unittest
 
 from mlflow.types import agent
 
-import sentence_completion.message_factory as message_factory
+import sentence_completion.message_factory as mf
 
 
 class TestSentenceCompletionMessageFactory(unittest.TestCase):
 
-    def test_make_input_messages_returns_system_and_user_messages(self):
+    def test_make_conversation_starters_returns_system_and_user_messages(self):
         # Given
-        template = "This is a test template"
+        template = "This is a test template."
 
         # When
-        messages = message_factory.SentenceCompletionMessageFactory.make_input_messages(
+        messages = mf.SentenceCompletionChatMessageFactory.make_conversation_starters(
             template
         )
 

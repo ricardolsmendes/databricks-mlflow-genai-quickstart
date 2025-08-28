@@ -6,17 +6,17 @@ from mlflow.pyfunc import ChatAgent
 from mlflow.types import agent
 from mlflow.types.agent import ChatAgentMessage, ChatAgentResponse, ChatContext
 
-import sentence_completion.agent as custom_agent
+from sentence_completion import llm_client_wrapper
 
 
-class MLflowChatAgentWrapper(ChatAgent):
+class ChatAgentWrapper(ChatAgent):
     """
-    Wrap the custom agent in an MLflow ChatAgent,
+    Wrap a generic LLM client in an MLflow ChatAgent,
     defining a predictable API for the agent using a signature.
     """
 
     def __init__(self):
-        self.custom_agent = custom_agent.SentenceCompletionAgent()
+        self._llm_client = llm_client_wrapper.DatabricksEndpointClient()
 
     @mlflow.trace
     def predict(
@@ -28,7 +28,7 @@ class MLflowChatAgentWrapper(ChatAgent):
         # ChatAgent has a built-in helper method to help convert framework-specific
         # messages, like mlflow ChatAgentMessage to a python dictionary.
         message_dict = self._convert_messages_to_dict(messages)
-        output = self.custom_agent.invoke(message_dict)
+        output = self._llm_client.predict(message_dict)
 
         return ChatAgentResponse(
             messages=[

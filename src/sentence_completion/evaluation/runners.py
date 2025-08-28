@@ -3,7 +3,7 @@ import logging
 import mlflow
 from mlflow.models.evaluation.base import EvaluationResult
 
-from sentence_completion import agent_wrapper
+from sentence_completion import chat_agent_wrapper
 from sentence_completion.evaluation import dataset, scorers
 
 
@@ -16,5 +16,5 @@ class BasicPromptRunner:
         return mlflow.genai.evaluate(
             data=dataset.EVAL_DATA,
             scorers=scorers.EVAL_SCORERS,
-            predict_fn=agent_wrapper.MLflowChatAgentWrapper().predict,
+            predict_fn=chat_agent_wrapper.ChatAgentWrapper().predict,
         )

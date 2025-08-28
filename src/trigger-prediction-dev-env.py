@@ -2,7 +2,7 @@ import logging
 
 import dotenv
 
-from sentence_completion import agent_wrapper, message_factory
+from sentence_completion import chat_agent_wrapper, message_factory
 
 logging.basicConfig(level=logging.INFO)
 dotenv.load_dotenv()
@@ -12,8 +12,9 @@ SENTENCE_TEMPLATE = (
     " ____ (object)"
 )
 
-result = agent_wrapper.MLflowChatAgentWrapper().predict(
-    message_factory.SentenceCompletionMessageFactory.make_input_messages(
+# Complete sentences using LLMs
+result = chat_agent_wrapper.ChatAgentWrapper().predict(
+    message_factory.SentenceCompletionChatMessageFactory.make_conversation_starters(
         SENTENCE_TEMPLATE
     )
 )
