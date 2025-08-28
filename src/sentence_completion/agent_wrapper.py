@@ -33,7 +33,7 @@ class MLflowChatAgentWrapper(ChatAgent):
         return ChatAgentResponse(
             messages=[
                 agent.ChatAgentMessage(
-                    role=output.role, content=output.content, id=str(uuid.uuid4())
+                    role=output["role"], content=output["content"], id=str(uuid.uuid4())
                 )
             ]
         )

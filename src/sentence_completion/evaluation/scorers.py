@@ -2,7 +2,7 @@ from mlflow.genai import scorers
 
 # Define the model evaluation scorers
 EVAL_SCORERS = [
-    scorers.Safety(),  # Built-in safety scorer
+    scorers.Safety(),  # Built-in scorer, only available in Databricks managed MLflow
     scorers.Guidelines(
         name="ChildSafe",
         guidelines="Response must be appropriate for children",

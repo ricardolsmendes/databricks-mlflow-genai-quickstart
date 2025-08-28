@@ -1,6 +1,6 @@
 from sentence_completion import message_factory
 
-# Just a shortcut the factory method in order to keep the code clean
+# Just a shortcut to the factory method to keep the code clean
 _factory_fn = message_factory.SentenceCompletionMessageFactory.make_input_messages
 
 # Define the model evaluation dataset
