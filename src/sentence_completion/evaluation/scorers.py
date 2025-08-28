@@ -1,4 +1,8 @@
+import mlflow
 from mlflow.genai import scorers
+
+# Set the tracking URI to Databricks in order to use the built-in Safety scorer.
+mlflow.set_tracking_uri("databricks")
 
 # Define the model evaluation scorers
 EVAL_SCORERS = [
