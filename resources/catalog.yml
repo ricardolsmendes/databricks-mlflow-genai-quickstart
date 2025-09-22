@@ -1,0 +1,6 @@
+resources:
+  schemas:
+    ai:
+      name: ai
+      catalog_name: mlflow_genai_quickstart
+      comment: Schema for the Databricks MLflow GenAI Quickstart

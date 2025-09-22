@@ -7,13 +7,18 @@ class DatabricksEndpointClient:
     defining a predictable API for LLM models served by Databricks.
     """
 
-    def __init__(self, name: str = "databricks-llama-4-maverick"):
+    _ENDPOINT_NAME = "databricks-llama-4-maverick"
+
+    def __init__(self):
         self._client = deployments.get_deploy_client("databricks")
-        self._endpoint_name = name
+
+    @classmethod
+    def get_endpoint_name(cls) -> str:
+        return cls._ENDPOINT_NAME
 
     def predict(self, messages: list[dict]) -> dict:
         response = self._client.predict(
-            endpoint=self._endpoint_name, inputs={"messages": messages}
+            endpoint=self._ENDPOINT_NAME, inputs={"messages": messages}
         )
 
         return response["choices"][0]["message"]
